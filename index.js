@@ -13,6 +13,7 @@ let closeList;
 
 addButton.addEventListener('click',addTask);
 
+
 function addTask() {
 
     if (inputTask.value) {
@@ -49,6 +50,20 @@ function addTask() {
 
 
 }
+
+document.addEventListener('keyup',addTaskEnter);
+
+function addTaskEnter(event) {
+
+    if (event.key==='Enter') {
+
+        addTask();
+
+    }
+
+}
+
+
 
 
 function markTask(event) {
