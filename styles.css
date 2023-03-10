@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+:root {
+    --darkColor: rgb(36, 36, 39);
+}
+
+.inactive {
+    display: none;
+}
+
+body {
+
+    background-color: var(--darkColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+main {
+    width: 300px;
+    background-color: var(--darkColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px;
+    gap:20px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+    color: var(--darkColor);
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0.1em 0.25em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+li {
+    font-size: 1.5rem;
+}
+
+.taskContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.task {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.task>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputTask {
+    padding: 2px;
+}
+
+.inputTask::placeholder {
+    opacity: 50%;
+}
+
+.closeButton {
+    padding: 0 0.25em;
+    opacity: 5%;
+}
+
+.closeButton:hover {
+    opacity: 75%;
+}
+
+.inputSection {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.check {
+    cursor: pointer;
+}
+
+.checkOn {
+    color: rgb(70, 172, 235);
+}
+
+.clearButtons {
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+
+.clearButtons>button {
+    opacity: 10%;
+}
+
+.clearButtons>button:hover {
+    opacity: 75%;
+}
+
