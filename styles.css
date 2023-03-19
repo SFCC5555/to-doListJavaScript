@@ -55,6 +55,7 @@ li {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .task {

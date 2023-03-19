@@ -35,7 +35,7 @@ function addTask() {
 
         numberOfTask++
 
-        taskCounter.innerText=`You have ${numberOfTask} tasks`;
+        numberOfTask===1?taskCounter.innerText=`You have 1 task`:taskCounter.innerText=`You have ${numberOfTask} tasks`;
 
         checkList = document.querySelectorAll('.check');
 
@@ -88,7 +88,7 @@ function clearTask(event) {
 
     numberOfTask--;
 
-    numberOfTask?taskCounter.innerText=`You have ${numberOfTask} tasks`:taskCounter.innerText=`You don´t have tasks`;
+    numberOfTask===1?taskCounter.innerText=`You have 1 task`:numberOfTask?taskCounter.innerText=`You have ${numberOfTask} tasks`:taskCounter.innerText=`You don´t have tasks`;
 
 }
 
@@ -111,19 +111,23 @@ const clearDoneButton = document.getElementById('clearDoneButton');
 clearDoneButton.addEventListener('click',clearDone);
 
 function clearDone() {
-    
+
+
     let doneList = document.querySelectorAll('.checkOn');
+
+    console.log(doneList)
 
     doneList.forEach(targetTask=>{
 
         targetTask.classList.add('inactive');
         targetTask.classList.remove('task');
+        targetTask.classList.remove('checkOn');
 
     })
 
     numberOfTask-=doneList.length;
 
-    numberOfTask?taskCounter.innerText=`You have ${numberOfTask} tasks`:taskCounter.innerText=`You don´t have tasks`;
+    numberOfTask===1?taskCounter.innerText=`You have 1 task`:numberOfTask?taskCounter.innerText=`You have ${numberOfTask} tasks`:taskCounter.innerText=`You don´t have tasks`;
 
 }
 
