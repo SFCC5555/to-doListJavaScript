@@ -1,17 +1,39 @@
-const inputTask = document.querySelector('.inputTask');
 const taskContainer = document.querySelector('.taskContainer');
+
+let tasks = localStorage.getItem('tasks')
+
+taskContainer.innerHTML=tasks
+
+const inputTask = document.querySelector('.inputTask');
 const addButton = document.getElementById('addButton');
 const taskCounter = document.getElementById('taskCounter');
 
-let numberOfTask=0;
+let numberOfTask=document.querySelectorAll('.task').length;
+numberOfTask===1?taskCounter.innerText=`You have 1 task`:numberOfTask?taskCounter.innerText=`You have ${numberOfTask} tasks`:taskCounter.innerText=`You don´t have tasks`;
 
-let counter=0;
+let counter;
+numberOfTask?counter=document.querySelectorAll('.task')[numberOfTask-1].id:counter=0;
+
 
 let checkList;
 
 let closeList;
 
+checkList = document.querySelectorAll('.check');
+
+checkList.forEach(check=>check.addEventListener('click',markTask));
+
+closeList = document.querySelectorAll('.closeButton');
+
+closeList.forEach(close=>close.addEventListener('click',clearTask));
+
 addButton.addEventListener('click',addTask);
+
+
+function saveTasks() {
+    localStorage.setItem('tasks',taskContainer.innerHTML)
+}
+
 
 
 function addTask() {
@@ -45,6 +67,7 @@ function addTask() {
 
         closeList.forEach(close=>close.addEventListener('click',clearTask));
 
+        saveTasks()
 
     }
 
@@ -73,6 +96,9 @@ function markTask(event) {
     let targetTask = document.getElementById(target.value);
 
     targetTask.classList.toggle('checkOn');
+
+    saveTasks()
+
 }
 
 
@@ -85,10 +111,13 @@ function clearTask(event) {
 
     targetTask.classList.add('inactive');
     targetTask.classList.remove('task');
+    targetTask.classList.remove('checkOn');
 
     numberOfTask--;
 
     numberOfTask===1?taskCounter.innerText=`You have 1 task`:numberOfTask?taskCounter.innerText=`You have ${numberOfTask} tasks`:taskCounter.innerText=`You don´t have tasks`;
+
+    saveTasks()
 
 }
 
@@ -104,6 +133,8 @@ function clearAll() {
 
     taskCounter.innerText=`You don´t have tasks`;
 
+    saveTasks()
+
 }
 
 const clearDoneButton = document.getElementById('clearDoneButton');
@@ -114,8 +145,6 @@ function clearDone() {
 
 
     let doneList = document.querySelectorAll('.checkOn');
-
-    console.log(doneList)
 
     doneList.forEach(targetTask=>{
 
@@ -128,6 +157,8 @@ function clearDone() {
     numberOfTask-=doneList.length;
 
     numberOfTask===1?taskCounter.innerText=`You have 1 task`:numberOfTask?taskCounter.innerText=`You have ${numberOfTask} tasks`:taskCounter.innerText=`You don´t have tasks`;
+
+    saveTasks()
 
 }
 
